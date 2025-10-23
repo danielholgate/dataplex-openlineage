@@ -4,12 +4,11 @@
 # Publishes an OpenLineage event to the Dataplex Lineage API.
 #
 # Usage:
-#   ./publish_lineage.sh <project_id> <template_file.json> <bigquery_table_string>
+#   ./publish_lineage.sh <project_id> <template_file.json> <bigquery_table_id>
 #
 # Example:
 #   ./publish_lineage.sh my-gcp-project event.json my-gcp-project.my_dataset.my_table
 #
-# --- Argument Validation ---
 
 # Check if the correct number of arguments (exactly 3) were provided
 if [ "$#" -ne 3 ]; then
@@ -28,7 +27,7 @@ BIGQUERY_TABLE="$3"
 # Hardcoded location for now (seems to always work)
 LOCATION='global'
 
-# Define name for the temporary event file we will create with the specific bigquery tablename
+# Define name for the temporary event file we will create to substitute in the bigquery table ID
 TEMP_PAYLOAD="temp_event_payload.json"
 
 # Check template file actually exists before proceeding
@@ -37,12 +36,10 @@ if [ ! -f "$TEMPLATE_FILE" ]; then
     exit 1
 fi
 
-echo "Preparing event payload: $TEMPLATE_FILE"
-
 # 1. Copy the template to a new temporary file
 cp "$TEMPLATE_FILE" "$TEMP_PAYLOAD"
 
-# 2. Replace bigquery tablename placeholder in temporary file
+# 2. Replace bigquery ID into placeholder in temporary file
 sed -i "s/\[project_id\]\.\[dataset\]\.\[table\]/$BIGQUERY_TABLE/g" "$TEMP_PAYLOAD"
 
 echo "Sending payload to Data Lineage API for project $PROJECT_ID..."
@@ -57,6 +54,6 @@ curl -X POST -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 echo
 
 # 4. Clean up the temporary file
-#rm "$TEMP_PAYLOAD"
+rm "$TEMP_PAYLOAD"
 
 echo "Done."
