@@ -1,0 +1,25 @@
+{
+  "producer": "https://github.com/my-custom-integration/my-app/v1.0",
+  "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json",
+  "eventType": "COMPLETE",
+  "eventTime": "2025-10-21T21:30:00.000Z",
+  "run": {
+    "runId": "d4l9-4f69-b5f7-3c7b3b0d4f3e"
+  },
+  "job": {
+    "namespace": "custom-lineage-test",
+    "name": "link_external_db_to_bq_table"
+  },
+  "inputs": [
+    {
+      "namespace": "s3://test-bucket",
+      "name": "file.csv"
+    }
+  ],
+  "outputs": [
+    {
+      "namespace": "bigquery",
+      "name": "[project_id].[dataset].[table]"
+    }
+  ]
+}
