@@ -1,11 +1,18 @@
 # Dataplex Openlineage Samples
 
-This repository contains sample openlineage events. Each event demonstrated attaching a different system to a Bigquery table.
 
-load_lineage.sh loads lineage event via the [lineage API](https://cloud.google.com/dataplex/docs/reference/data-lineage/rest) and allows a specific bigquery table ID to be substitued in to load events quickly.
+The (event_samples)[/event_samples] directory contains sample events for all external systems currently supported by the Dataplex Lineage API, to demonstrate the namespaces. Each event is associated with a Bigquery table as the single output.
+
+A python script (import_lineage.py)[import_lines.py] is also provided to load events into a Google Cloud project. 
+The script takes one of the events files as a template, and substitutes in the current timestamp and provided BigQuery table ID.
 
 Usage:
 ```
-load_lineage.sh <project_id> <template_file.json> <bigquery_table_id>
+import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
 ```
+
+example:
+python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.openlineage_events.new_table
+
+
 

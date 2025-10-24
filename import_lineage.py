@@ -20,6 +20,7 @@ import os.path
 import json
 import requests
 import datetime
+import openlineage
 import argparse
 from google.auth import default
 from google.auth.transport.requests import Request
@@ -111,7 +112,7 @@ def main():
             template_json['eventTime'] = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
             # Set output BigQuery table
             template_json['outputs'][0]['name'] = output_table_id
-            print (json.dumps(template_json, indent=4))
+            #print (json.dumps(template_json, indent=4))
 
         # 2. Replace the placeholder with the actual BigQuery table ID in memory
         payload_data = json.dumps(template_json)

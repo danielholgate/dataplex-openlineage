@@ -13,7 +13,7 @@
   "inputs": [
     {
       "namespace": "awsathena://athena.us-west-2.amazonaws.com",
-      "name": "test-catalog.test-db.test-table"
+      "name": "test-catalog.test-db.test-athena-table"
     }
   ],
   "outputs": [
