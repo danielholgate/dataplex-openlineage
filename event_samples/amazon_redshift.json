@@ -12,7 +12,7 @@
   },
   "inputs": [
     {
-      "namespace": "redshift://test-cluster.us-west-2:5439/test-database.test-schema.test-table",
+      "namespace": "redshift://test-cluster.us-west-2:5439/test-database.test-schema.redshift-table",
       "name": ""
     }
   ],
