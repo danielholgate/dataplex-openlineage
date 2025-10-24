@@ -31,7 +31,9 @@ Authenticating with Google Cloud default credentials...
 }
 ```
 
-In BigQuery:
+Lineage event in BigQuery:
+
+<img width="578" height="152" alt="Screenshot 2025-10-24 13 02 07" src="https://github.com/user-attachments/assets/a93454ca-7f21-45f6-bc65-b95eaeb276ae" />
 
 
 
