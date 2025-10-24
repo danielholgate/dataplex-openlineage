@@ -16,6 +16,13 @@ python import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
 
 Example:
 
+
+install dependencies
+```
+pip install openlineage-python requests google-auth
+```
+
+Run
 ```
 python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
 ```
