@@ -1,7 +1,7 @@
 # Dataplex Openlineage Namespace Samples
 
 
-The [event_samples](/event_samples) directory contains sample events for all Opeanlinage systems currently supported by the Dataplex Lineage API, to demonstrate how namespaces look for each. 
+The [event_samples](/event_samples) directory contains sample events for all Opeanlinage systems currently supported by the Dataplex Lineage API to demonstrate how the namespaces look. 
 Each event is associated with a Bigquery table as the single output.
 
 For convenience, a python script ([import_lineage.py](import_lines.py)) is also provided to load these events into a Google Cloud project. 
