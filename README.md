@@ -13,7 +13,26 @@ import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
 ```
 
 example:
-python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.openlineage_events.new_table
+python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
+
+console output:
+```bash
+Project ID: gcp-project1122
+Template File: event_samples/amazon_athena.json
+BigQuery Table ID: gcp-project1122.openlineage_events_test.bq_table
+Sending lineage event to Lineage API for project gcp-project1122...
+Authenticating with Google Cloud default credentials...
+{
+  "process": "projects/9999999999/locations/global/processes/dcb385831aaea2de1ff32a5b50c4ba02",
+  "run": "projects/9999999999/locations/global/processes/dcb385831aaea2de1ff32a5b50c4ba02/runs/b3619d942d00c302dd0e2339d8d5d74d",
+  "lineageEvents": [
+    "projects/9999999999/locations/global/processes/dcb385831aaea2de1ff32a5b50c4ba02/runs/b3619d942d00c302dd0e2339d8d5d74d/lineageEvents/74939e02-1966-472c-b4e7-c5874b59526e"
+  ]
+}
+```
+
+In BigQuery:
+
 
 
 
