@@ -9,16 +9,17 @@ See here for more details aboud custom lineage events with Dataplex [https://clo
 For convenience, a python script ([import_lineage.py](import_lines.py)) is also provided to load these events into a Google Cloud project. 
 The script takes one of the events files as a template, and substitutes in the current timestamp and provided BigQuery table ID to attach the event to.
 
-import_lineage.py
 Usage:
 ```
 python import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
 ```
 
-example:
-python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
+Example:
 
-console output:
+```
+python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
+```
+produces console output:
 ```bash
 Project ID: gcp-project1122
 Template File: event_samples/amazon_athena.json
