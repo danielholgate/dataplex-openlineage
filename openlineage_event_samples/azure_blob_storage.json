@@ -1,5 +1,5 @@
 {
-  "producer": "https://github.com/my-custom-integration/my-app/v1.0",
+  "producer": "https://github.com/OpenLineage/OpenLineage/tree/1.39.0/demo",
   "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json",
   "eventType": "COMPLETE",
   "eventTime": "2025-10-21T21:30:00.000Z",
