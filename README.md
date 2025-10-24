@@ -12,7 +12,7 @@ The script takes one of the events files as a template, and substitutes in the c
 import_lineage.py
 Usage:
 ```
-import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
+python import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
 ```
 
 example:
