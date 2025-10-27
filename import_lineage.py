@@ -20,7 +20,7 @@ import os.path
 import json
 import requests
 import datetime
-import openlineage
+from openlineage.client.uuid import generate_new_uuid
 import argparse
 from google.auth import default
 from google.auth.transport.requests import Request
@@ -62,8 +62,6 @@ def parse_arguments():
     
     return args
 
-# --- Main execution flow ---
-
 def main():
     """Main execution function."""
 
@@ -73,29 +71,24 @@ def main():
     try:
         args = parse_arguments()
 
-    # Assign arguments to variables (matching your original variable names)
         project_id = args.project_id
         template_file = args.template_file
-        output_table_id = args.bigquery_table_id # Using 'output_table_id' like your original snippet
+        output_table_id = args.bigquery_table_id 
 
-    # You can now use these variables in the rest of your script
         print(f"Project ID: {project_id}")
         print(f"Template File: {template_file}")
         print(f"BigQuery Table ID: {output_table_id}")
 
     except SystemExit:
-        # This catches the sys.exit(1) from parser.print_help
+        # catche sys.exit(1) from parser.print_help
         # or errors from parser.parse_args()
         sys.exit(1) # Ensure the script exits with an error code
     except Exception as e:
         print(f"An error occurred during argument parsing: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # Hardcode location
+    # Hardcode location for now. Seems to always work for any lineage creation
     location = 'global'
-    
-    # Define the placeholder string from template which is to be replaced
-    placeholder = "[project_id].[dataset].[table]"
 
     # Check template file actually exists before proceeding
     if not os.path.isfile(template_file):
@@ -112,9 +105,11 @@ def main():
             template_json['eventTime'] = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
             # Set output BigQuery table
             template_json['outputs'][0]['name'] = output_table_id
-            #print (json.dumps(template_json, indent=4))
+            # Set unique run ID (not necessary, but for completeness sake)
+            uuid = generate_new_uuid();
+            template_json['run']['runId'] = str(uuid)
 
-        # 2. Replace the placeholder with the actual BigQuery table ID in memory
+        #print(json.dumps(template_json, indent=4))  print request
         payload_data = json.dumps(template_json)
 
         print(f"Sending lineage event to Lineage API for project {project_id}...")
