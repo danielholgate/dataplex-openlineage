@@ -23,13 +23,13 @@ pip install openlineage-python requests google-auth
 
 Run
 ```
-python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
+python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.bq_table
 ```
 produces console output:
 ```bash
 Project ID: gcp-project1122
 Template File: event_samples/amazon_athena.json
-BigQuery Table ID: gcp-project1122.openlineage_events_test.new_table
+BigQuery Table ID: gcp-project1122.openlineage_events_test.bq_table
 Sending lineage event to Lineage API for project gcp-project1122...
 Authenticating with Google Cloud default credentials...
 {
