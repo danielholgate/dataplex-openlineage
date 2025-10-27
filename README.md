@@ -1,4 +1,4 @@
-# Openlineage Namespace examples for Dataplex
+# Openlineage Namespace examples for Dataplex / BigQuery
 
 
 The [event_samples](/event_samples) directory contains sample events in [Opeanlineage](https://openlineage.io/) format for all systems which are currently supported by the Dataplex Lineage API.
