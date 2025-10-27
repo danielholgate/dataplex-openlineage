@@ -29,7 +29,7 @@ produces console output:
 ```bash
 Project ID: gcp-project1122
 Template File: event_samples/amazon_athena.json
-BigQuery Table ID: gcp-project1122.openlineage_events_test.bq_table
+BigQuery Table ID: gcp-project1122.openlineage_events_test.new_table
 Sending lineage event to Lineage API for project gcp-project1122...
 Authenticating with Google Cloud default credentials...
 {
