@@ -10,7 +10,7 @@ Example:
   python3 publish_lineage.py my-gcp-project event.json my-gcp-project.my_dataset.my_table
 
 Requires:
-  requires 'requests' and 'google-auth' libraries.
+  requires 'openlineage-python' 'requests' and 'google-auth' libraries.
   Install them using pip:
     pip install requests google-auth
 """
