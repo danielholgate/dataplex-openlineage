@@ -1,21 +1,32 @@
-# Dataplex Openlineage Samples
+# Openlineage Namespace examples for Dataplex
 
 
-The [event_samples](/event_samples) directory contains sample events for all external systems currently supported by the Dataplex Lineage API, to demonstrate how namespaces look for each. Each event is associated with a Bigquery table as the single output.
+The [event_samples](/event_samples) directory contains sample events in [Opeanlineage](https://openlineage.io/) format for all systems which are currently supported by the Dataplex Lineage API.
+Each event is associated with a Bigquery table as the single output. 
 
-A python script ([import_lineage.py](import_lines.py)) is also provided to load events into a Google Cloud project. 
-The script takes one of the events files as a template, and substitutes in the current timestamp and the provided BigQuery table ID to attach to as an output for the event
+See here for more details aboud custom lineage events with Dataplex [https://cloud.google.com/dataplex/docs/open-lineage](https://cloud.google.com/dataplex/docs/open-lineage)
 
-import_lineage.py
+For convenience, a python script ([import_lineage.py](import_lines.py)) is also provided to load these events into a Google Cloud project. 
+The script takes one of the events files as a template, and substitutes in the current timestamp and provided BigQuery table ID to attach the event to.
+
 Usage:
 ```
-import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
+python import_lineage.py <project_id> <template_file.json> <bigquery_table_id>
 ```
 
-example:
-python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
+Example:
 
-console output:
+
+install dependencies
+```
+pip install openlineage-python requests google-auth
+```
+
+Run
+```
+python import_lineage.py gcp-project2 event_samples/amazon_athena.json analytics_project123.testing_openlineage_events.new_table
+```
+produces console output:
 ```bash
 Project ID: gcp-project1122
 Template File: event_samples/amazon_athena.json
